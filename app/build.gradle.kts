@@ -9,8 +9,8 @@ android {
 
     defaultConfig {
         applicationId = "com.wifiautoswitch"
-        minSdk = 29
-        targetSdk = 35
+        minSdk = 28
+        targetSdk = 28
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
