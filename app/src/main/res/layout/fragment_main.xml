@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="wifiautoswitch.MainFragment">
+    android:padding="10dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/text_subtitle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="WiFi 信号断开阈值"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/arcSeekBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <com.king.view.arcseekbar.ArcSeekBar
+        android:id="@+id/arcSeekBar"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="100dp"
+        app:arcAllowableOffsets="10dp"
+        app:arcEnabledDrag="true"
+        app:arcLabelPaddingLeft="5dp"
+        app:arcLabelPaddingTop="-15dp"
+        app:arcLabelTextSize="50dp"
+        app:arcShowThumb="true"
+        app:arcShowTick="true"
+        app:arcStartAngle="155"
+        app:arcStrokeWidth="17dp"
+        app:arcSweepAngle="230"
+        app:arcThumbColor="#31820F"
+        app:arcThumbDrawable="@drawable/baseline_rocket_launch_24"
+        app:arcTickPadding="5dp"
+        app:layout_constraintBottom_toTopOf="@id/text_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_subtitle" />
+
+    <TextView
+        android:id="@+id/text_rssi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="当前阈值为:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/text_desc"
+        app:layout_constraintTop_toBottomOf="@id/arcSeekBar"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/text_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="WiFi 信号强度低于该阈值后, 将会自动断开当前 WiFi, 建议设置为 20% 以下"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/space_void"
+        app:layout_constraintTop_toBottomOf="@id/text_rssi"
+        tools:ignore="HardcodedText" />
+
+    <!-- 屏幕最下方的占位view-->
+    <Space
+        android:id="@+id/space_void"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_desc" />
+</androidx.constraintlayout.widget.ConstraintLayout>
